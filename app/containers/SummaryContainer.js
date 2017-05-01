@@ -75,19 +75,27 @@ class SummaryContainer extends Component{
         this.onChange = this.onChange.bind(this);
     }
     onChange(e) {
-        for (var i in allCreditCardInfo){
-            if(e.target.name == allCreditCardInfo[i].name){
-                break;
-            }
-        }
-        let info = allCreditCardInfo[i];
+
         let tempCreditCardInfo = Array.from(this.state.creditCardInfo);
         if (e.target.checked){
+            for (var i in allCreditCardInfo){
+                if(e.target.name == allCreditCardInfo[i].name){
+                    break;
+                }
+            }
+            let info = allCreditCardInfo[i];
             tempCreditCardInfo.push(info);
         }
         else{
+            for (var i in tempCreditCardInfo){
+                if(e.target.name == tempCreditCardInfo[i].name){
+                    break;
+                }
+            }
+            let info = allCreditCardInfo[i];
             tempCreditCardInfo.splice(i,1);
         }
+        console.log(tempCreditCardInfo);
         this.setState({
             creditCardInfo: tempCreditCardInfo
         });
