@@ -6,6 +6,7 @@ import TransactionTable from '../components/TransactionTable'
 import SummaryTable from '../components/SummaryTable'
 import BarChartGraph from '../components/BarChartGraph'
 import ProgressBar from '../components/ProgressBar'
+import {writeUserData,readUserData} from '../utils/firebaseHelper'
 
 const expenseLabel = 'Add Expense';
 const incomeLabel = 'Add Income';
@@ -41,9 +42,11 @@ class MainContainer extends Component{
 
     }
     handleAddExpense (e) {
-        console.log('TODO : Add function to manage expense ')
+        writeUserData('TestUser','Nick','test@gmail.com','');
+        console.log('TODO : Add function to manage expense ');
     }
     handleAddIncome (e) {
+        readUserData('TestUser');
         console.log('TODO : Add function to manage income ')
     }
     render() {
