@@ -7,6 +7,7 @@ import SummaryTable from '../components/SummaryTable'
 import BarChartGraph from '../components/BarChartGraph'
 import ProgressBar from '../components/ProgressBar'
 import {writeUserData,readUserData} from '../utils/firebaseHelper'
+import ActionModal from '../components/ActionModal'
 
 const expenseLabel = 'Add Expense';
 const incomeLabel = 'Add Income';
@@ -35,23 +36,37 @@ class MainContainer extends Component{
         super()
         this.state = {
             isLoading: true,
-            status: true
-        }
+            status: true,
+            isOpen: false
+        };
+        this.submitExpense = this.submitExpense.bind(this);
+        this.hideModal = this.hideModal.bind(this);
     }
     componentDidMount () {
 
     }
     handleAddExpense (e) {
-        writeUserData('TestUser','Nick','test@gmail.com','');
-        console.log('TODO : Add function to manage expense ');
+        this.setState({isOpen: true});
     }
     handleAddIncome (e) {
-        readUserData('TestUser');
         console.log('TODO : Add function to manage income ')
+    }
+    submitExpense (e) {
+        console.log('TODO : Add function to submit expense ')
+    }
+    hideModal () {
+        this.setState({isOpen: false});
     }
     render() {
         return (
             <WrapperContainer>
+                <ActionModal
+                  show={this.state.isOpen}
+                  onSubmit={this.submitExpense}
+                  onClose = {this.hideModal}
+                  title = 'test title'
+                  content = 'test cpontent'
+                />
                 <Calendar></Calendar>
                 <div className="row">
                     <div className="col-md-6">
