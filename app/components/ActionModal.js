@@ -7,6 +7,7 @@ import {
   ModalBody,
   ModalFooter
 } from 'react-modal-bootstrap';
+import Calculator from '../components/Calculator';
 
 function ActionModal (props) {
     return (
@@ -17,6 +18,7 @@ function ActionModal (props) {
         </ModalHeader>
         <ModalBody>
           <p>{props.content}</p>
+          <Calculator/>
         </ModalBody>
         <ModalFooter>
           <button className='btn btn-default' onClick={props.onClose}>
